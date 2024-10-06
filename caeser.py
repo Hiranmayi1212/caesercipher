@@ -1,22 +1,33 @@
-a=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+from alphabetic import WritingSystem
+
+# Create a WritingSystem instance to access all core functions
+ws = WritingSystem()
+
+# Retrieve the alphabet of the language
+a=ws.by_language(ws.Language.English, letter_case=ws.LetterCase.Lower, as_list=True)
+
+
 def encrypt(c,s):
     for i in s:
-        if i in a:
-            n=a.index(i)
-            n=n-c
+        if i.lower() in a:
+            n=a.index(i.lower())
+            n=n+c
             b=a[(n%25)]
+            if i.isupper()==True:
+                b=b.upper()
             s=s.replace(i,b)
         
     print(s) 
-
+    
 def decrypt(c,s):
     for i in s:
-        if i in a:
-            n=a.index(i)
+        if i.lower() in a:
+            n=a.index(i.lower())
             n=n-c
             b=a[(n%25)]
+            if i.isupper()==True:
+                b=b.upper()
             s=s.replace(i,b)
-        
     print(s) 
 
 c=int(input("enter the cipher value"))
