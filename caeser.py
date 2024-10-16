@@ -8,12 +8,10 @@ a=ws.by_language(ws.Language.English, letter_case=ws.LetterCase.Lower, as_list=T
 
 
 def encrypt(n,c):
-    n+c
-    return n
+    return n+c
     
 def decrypt(n,c):
-    n-c
-    return n
+    return n-c
 
 c=int(input("enter the cipher value"))
 s=input("enter string ")
@@ -22,9 +20,9 @@ for i in s:
         if i.lower() in a:
             n=a.index(i.lower())
             if d==1:
-                encrypt(n,c)
+                n=encrypt(n,c)
             elif d==2:
-                decrypt(n,c)
+                n=decrypt(n,c)
             b=a[(n%25)]
             if i.isupper()==True:
                 b=b.upper()
